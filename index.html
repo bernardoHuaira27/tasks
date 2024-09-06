@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/stylesMain.css">
+    <title>Tareas || BernarCode</title>
+</head>
+<body>
+    <nav class="navbar bg-primary">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand fw-bold text-light">APP OF TASK</a>
+            <form class="d-flex" >
+                <input type="search" id="search" placeholder="Search" class="form-control me-2">
+                <button type="submit" class="btn btn-warning"> Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div class="row p-4">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="task-form">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Name of the task" class="form-control my-2">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" id="description" cols="30" rows="10" class="form-control my-2" placeholder="Description of the Task"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 text-center">Save task</button>
+                            <span id="task-add"></span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+
+                <div class="card my-4" id="task-result" >
+                    <div class="card-body">
+                        <ul id="container"></ul>
+                    </div>
+                </div>
+                <table class="table table-bodered table-sm">
+                    <thead>
+                        <tr>
+                            <td class="text-center">ID</td>
+                            <td class="text-center">NOMBRE</td>
+                            <td class="text-center">DESCRIPCION</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tasks">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark p-2 mt-5 text-light text-center position-fixed bottom-0 w-100 p-4">
+        Desarrolladp por BernarCode || Derechos reservados
+    </footer>
+<script src="js/jquery.js"></script>
+<script src="js/ajax.js"></script>
+</body>
+</html>
