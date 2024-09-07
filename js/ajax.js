@@ -4,6 +4,7 @@ $(function() {
     $("#task-result").hide();
     $("#task-add").hide();
     fetchTasks()
+    let edit = false;
 
 
     //function for search tasks
@@ -36,9 +37,11 @@ $(function() {
         const postData = {
             name: $("#name").val(),
             description: $("#description").val(),
+            id: $("#taskId").val()
         }
+        const url = edit ===  false ? "php/addTask.php": "php/editTask.php"
         $.ajax({
-            url: "php/addTask.php",
+            url,
             data: postData,
             type: "POST",
             success: function(response){
@@ -89,6 +92,32 @@ $(function() {
             })
         }
     })
+
+    $(document).on("click", ".task-item", () => {
+        const element = $(this)[0].activeElement.parentElement.parentElement;
+        const id = $(element).attr("taskId");
+      
+        let url = "php/getTask.php";
+        $.ajax({
+            url,
+            data: { id },
+            type: "POST",
+            success: function(response) {
+                console.log(response)
+                if (!response.error) {
+                    const task = JSON.parse(response);
+                    $("#name").val(task.name);
+                    $("#description").val(task.description);
+                    $("#taskId").val(task.id);
+                    edit = true;
+                }else{
+                    console.log("a courrido un error")
+                }
+            }
+        });
+    });
+    
+    
 
 })
 
